@@ -1,24 +1,31 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
 
 import './Navbar.css'
 
 function Navbar1() {
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body" style={{fontWeight:'650'}}>
+    <Navbar collapseOnSelect expand="lg" className="navabar">
       <Container>
-        <button className="nav-btn">Post an Advertisement</button>
+        <div>
+        <Nav.Link as={Link} to='/post'  className="nav-btn">Post an Advertisement</Nav.Link>
+            </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">Properties</Nav.Link>
+            <Nav.Link  as={Link} to='/'>Home</Nav.Link>
+            <Nav.Link   as={Link} to="/search_filter">Properties</Nav.Link>
           </Nav>
           <Nav>
-            <button className='nav-btn'>Log In</button>
-            <button className='nav-btn'>Sign Up</button>
+          <div >
+            <Nav.Link as={Link} to='/login' className="nav-btn" style={{color:'#fff',padding:'8px'}}>Log In</Nav.Link>
+          </div>
+
+          <div>
+            <Nav.Link as={Link} to='/signup' className="nav-btn" style={{color:'#fff',padding:'8px'}}>Sign Up</Nav.Link>
+          </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
