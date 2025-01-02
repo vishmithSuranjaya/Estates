@@ -20,6 +20,7 @@ const Hero = ({ placeholder, onSearch}) => {
   };
   
   return (
+    <div className="hero">
     <div className='hero-section' style={{margin:'5rem 5rem 5rem 8rem'}}>
       <div className="first-content">
         <h1>Modern Living <br></br> for Everyone</h1>
@@ -51,6 +52,8 @@ const Hero = ({ placeholder, onSearch}) => {
   </form>
 </div>
     </div>
+
+  </div>
   )
 }
 

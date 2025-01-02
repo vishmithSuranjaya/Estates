@@ -1,5 +1,12 @@
-.hero-section{
-    background-image: url('');
+.hero{
+    background-image: url('../../assets/prop7.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0.5rem;
+    height: 400px;
+    color:aliceblue;
 }
 .first-content>h1{
     font-size: 45px;
@@ -31,19 +38,26 @@
 
 @media (max-width:420px){
     .hero-section .first-content>h1{
-        font-size: 50px;
+        
     }
     .search-bar{
         display: flex;
     }
 }
 
-@media (max-width < 400px){
+@media (max-width : 400px){
     .hero-section{
         margin: 0;
         padding: 0;
     }
+    .hero-section .first-content{
+        display: none;
+    }
+    .hero-section .second-content{
+        display: none;
+    }
     
 }
+
 
 
