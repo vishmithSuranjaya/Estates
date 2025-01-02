@@ -1,7 +1,7 @@
 .OfferBanner{
     /* font-family: ; */
-    background-color: #ccdfe5;
-    padding: 2rem;
+    background-color: #eaeff0;
+    padding:0 2rem 2rem 2rem;
     max-height: 550px;
     justify-content: center;
     align-items: center;
@@ -11,14 +11,9 @@
          display: block;
          padding: 0;
          margin: 0;
-         min-height: 700px;
+         min-height: 500px;
          justify-content: center;
          align-items: center;
-      }
- 
-      .first-content{
-         padding: 0;
-         margin: 0;
       }
  
       .second-content{
@@ -32,5 +27,9 @@
          display: block;
          width: 100%;
          overflow: hidden;
+     }
+     .OfferBanner .first-content h1{
+         margin: 0;
+         padding: 0;
      }
  }
