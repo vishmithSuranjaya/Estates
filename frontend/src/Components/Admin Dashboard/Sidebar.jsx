@@ -13,7 +13,7 @@ const Sidebar = () => {
             <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
           </div>
           <Nav className="flex-column mt-4 w-100">
-            {/* Dashboard Link */}
+           
             <Nav.Link
               as={NavLink}
               to="/admin"
@@ -25,7 +25,7 @@ const Sidebar = () => {
 
             
 
-            {/* Users Link */}
+           
             <Nav.Link
               as={NavLink}
               to="/admin-users"
@@ -35,7 +35,7 @@ const Sidebar = () => {
               Users
             </Nav.Link>
 
-            {/* Products Link */}
+           
             <Nav.Link
               as={NavLink}
               to="/ads"
@@ -45,7 +45,7 @@ const Sidebar = () => {
               Advertisements
             </Nav.Link>
 
-            {/* Settings Link */}
+            
             <Nav.Link
               as={NavLink}
               to="/admin-settings"
@@ -58,7 +58,7 @@ const Sidebar = () => {
         </Navbar>
       </div>
 
-      {/* Bottom Section */}
+     
       <div className="mb-4">
         <Nav.Link
           as={NavLink}
