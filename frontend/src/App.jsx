@@ -7,7 +7,9 @@ import Admin from './Pages/Admin';
 import AdminRoutes from './Components/Admin Dashboard/AdminRoutes';
 import Properties from './Pages/Properties';
 import AdsSearchPage from './Pages/Properties';
-import AdPostingForm from './AdPostingForm/AdPostingForm';
+import AdPostingForm from './Components/AdPostingForm/AdPostingForm';
+import Login from './Components/Login/Login';
+import Register from './Components/Login/Register';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +19,8 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/search_filter" element={<AdsSearchPage />} />
         <Route path='/admin' element={<Admin />} />
         <Route path="/post" element={<AdPostingForm />} />

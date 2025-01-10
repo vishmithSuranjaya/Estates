@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar1 from "../Components/Navbar/Navbar";
+import Navbar1 from "../Navbar/Navbar";
 
 const AdPostingForm = () => {
   const [formData, setFormData] = useState({

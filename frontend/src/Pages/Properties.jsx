@@ -70,7 +70,9 @@ function AdsSearchPage() {
               style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
             >
               <option value="">All Categories</option>
-              <option value="Electronics">Electronics</option>
+              <option value="Electronics">
+                
+              </option>
               <option value="Furniture">Furniture</option>
               <option value="Toys">Toys</option>
             </select>
