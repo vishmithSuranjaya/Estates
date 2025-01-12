@@ -68,7 +68,7 @@ function Navbar1() {
       {/* Login Modal */}
       <Modal show={showLoginModal} onHide={handleLoginModalClose} centered>
       <Modal.Header closeButton className="d-flex justify-content-center">
-  <Modal.Title className="text-center w-100">Log In</Modal.Title>
+  <Modal.Title className="text-center w-100 text-2xl text-blue-900"><h1 className='text-blue-950 font-bold'>Log In</h1></Modal.Title>
 </Modal.Header>
 
         <Modal.Body>
@@ -95,9 +95,8 @@ function Navbar1() {
                 placeholder="Enter your password"
               />
             </div>
-            <Button variant="primary" type="submit" className="w-100">
-              Log In
-            </Button>
+            <Button as={Link} to="/register" className="w-20 bg-blue-500 mr-2 float-right">Register</Button>
+            <Button type="submit" className="w-20 bg-blue-500 mr-2 float-right">Log In</Button>
           </form>
         </Modal.Body>
       </Modal>
