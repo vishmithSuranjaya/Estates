@@ -17,6 +17,8 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/search_filter" element={<AdsSearchPage />} />
         <Route path='/admin' element={<Admin />} />
         <Route path="/post" element={<AdPostingForm />} />

@@ -7,7 +7,7 @@ const OfferBanner = () => {
   return (
     <div className='OfferBanner'>
       <div className="first-content">
-        <h1>Top Offers</h1>
+        <h1 style={{fontFamily:"serif"}}>Top Offers</h1>
         </div>
       <div className="second-content" >
       {/* card slider starts here */}
