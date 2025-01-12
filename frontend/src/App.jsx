@@ -7,7 +7,7 @@ import Admin from './Pages/Admin';
 import AdminRoutes from './Components/Admin Dashboard/AdminRoutes';
 import Properties from './Pages/Properties';
 import AdsSearchPage from './Pages/Properties';
-import AdPostingForm from './AdPostingForm/AdPostingForm';
+import AdPostingForm from './Components/AdPostingForm/AdPostingForm';
 
 function App() {
   const [count, setCount] = useState(0)
