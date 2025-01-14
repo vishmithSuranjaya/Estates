@@ -38,7 +38,7 @@ const Sidebar = () => {
            
             <Nav.Link
               as={NavLink}
-              to="/ads"
+              to="/admin-ads"
               className="d-flex align-items-center px-3 py-3 my-1 text-white hover:bg-gray-700 rounded"
             >
               <FaBox className="me-2 text-lg" />

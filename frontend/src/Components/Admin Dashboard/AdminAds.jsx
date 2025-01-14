@@ -35,26 +35,25 @@ const AdminAds = () => {
     return null; // Return null if the token is not found
   };
 
-  const DeleteAd = (ad_id) => {
+  const DeleteAd = (id) => {
     const csrftoken = getCSRFToken();
-    console.log('CSRF Token:', csrftoken);  // Check if token is being retrieved
-    alert('Deleting ad with id: ' + ad_id);
-    axios.delete(`http://127.0.0.1:8000/Proprty_Listing/delete_advertisement/${ad_id}/`, {
+    alert('Deleting ad with id: ' + id);
+    axios.delete(`http://127.0.0.1:8000/Proprty_Listing/delete_advertisement/${id}/`, {
       headers: {
-        'X-CSRFToken': csrftoken
+        // 'X-CSRFToken': csrftoken
       }
     })
     .then((response) => {
       alert('Ad deleted!');
       // Remove deleted ad from state to reflect changes immediately
-      setAdvertisements((prevAds) => prevAds.filter((ad) => ad.ad_id !== ad_id));
+      // setAdvertisements((prevAds) => prevAds.filter((ad) => ad.ad_id !== ad_id));
     })
     .catch((error) => {
       alert('Error deleting ad');
       console.error('Delete Error:', error);
     });
-};
 
+};
 
   return (
     <div className="flex h-screen">

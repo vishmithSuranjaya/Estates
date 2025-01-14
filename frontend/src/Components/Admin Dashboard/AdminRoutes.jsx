@@ -12,7 +12,7 @@ const AdminRoutes = () => {
        
           <Route path="/admin" element={<Layout />} />
           <Route path="/admin-users" element={<UserDetails />} />
-          <Route path="/ads" element={<AdminAds />} />
+          <Route path="/admin-ads" element={<AdminAds />} />
         
       </Routes>
     </BrowserRouter>

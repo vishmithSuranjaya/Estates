@@ -7,6 +7,7 @@ import Admin from './Pages/Admin';
 import AdminAds from './Components/Admin Dashboard/AdminAds';
 import AdsSearchPage from './Pages/Properties';
 import AdPostingForm from './Components/AdPostingForm/AdPostingForm';
+import AdminSettings from './Components/Admin Dashboard/AdminSettings';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/search_filter" element={<AdsSearchPage />} />
         <Route path='/admin' element={<Admin />} />
-        <Route path='/ads' element={<AdminAds />} />
+        <Route path='/admin-ads' element={<AdminAds />} />
+        <Route path='/admin-settings' element={<AdminSettings />} />
         <Route path="/ad-posting-form" element={<AdPostingForm />} />
       </Routes>
      </BrowserRouter>

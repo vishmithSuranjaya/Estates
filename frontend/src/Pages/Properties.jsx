@@ -3,6 +3,8 @@ import Navbar1 from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 import axios from 'axios';
 import {Button} from 'react-bootstrap'
+import { IoCall } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 function AdsSearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -52,6 +54,7 @@ function AdsSearchPage() {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const navigate = useNavigate();
   return (
     <>
       {/* Navbar */}
@@ -131,9 +134,10 @@ function AdsSearchPage() {
           }}
         >
           {currentAds.length > 0 ? (
-            <ul style={{ listStyle: "none", padding: 0 }}>
+            <ul style={{ listStyle: "none", padding: 0,cursor:"pointer" }} onClick={() => navigate('/admin')}>
               {currentAds.map((ad) => (
                 <li
+                className="flex items-center p-4 bg-gray-100 rounded-lg shadow-md"
                   key={ad.ad_id}
                   style={{
                     border: "1px solid #eee",
@@ -142,12 +146,17 @@ function AdsSearchPage() {
                     padding: "15px",
                   }}
                 >
-                  <img src={`http://127.0.0.1:8000/${ad.image}`}  alt="advertisement"/>
-                  
-                 
+                  <div className="w-1/2">
+                  <img src={`http://127.0.0.1:8000/${ad.image}`}  alt="advertisement" />
+                  </div>
+                 <div className="w-2/3 mx-4">
                   <h3>{ad.title}</h3>
-                  <p>Category: {ad.category}</p>
-                  <p>Location: {ad.location}</p>
+                  <p className="my-0 text-gray-900">{ad.description}</p>
+                  <p className="my-0">Category: {ad.propertyType}</p>
+                  <p className='my-0'>Location: {ad.location}</p>
+                  <p className="my-0">Price: {ad.price}</p>
+                  <p className="my-0 ">{<IoCall />}   {ad.contactNumber}</p>
+                  </div>
                 </li>
               ))}
             </ul>

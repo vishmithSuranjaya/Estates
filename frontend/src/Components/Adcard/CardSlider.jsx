@@ -4,9 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import { IoCall } from "react-icons/io5";
 
 const CardSlider = () => {
   
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -16,21 +19,21 @@ const CardSlider = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1024, // For screen widths below 1024px
+        breakpoint: 1024, 
         settings: {
-          slidesToShow: 3, // Show 3 slides
+          slidesToShow: 3, 
         },
       },
       {
-        breakpoint: 768, // For screen widths below 768px
+        breakpoint: 768, 
         settings: {
-          slidesToShow: 2, // Show 2 slides
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 480, // For screen widths below 480px
+        breakpoint: 480, 
         settings: {
-          slidesToShow: 1, // Show 1 slide
+          slidesToShow: 1, 
         },
       },
     ],
@@ -81,16 +84,19 @@ const CardSlider = () => {
 <Slider {...settings}>
           {advertisements.slice(0, 5).map((ad) => (
             <div
-              className="bg-white h-[300px] text-black rounded-xl pl-[10px]"
+              className="bg-white h-[300px] text-black rounded-xl pl-[10px] cursor-pointer"
               style={{ marginLeft: "10px" }}
+              onClick={() => navigate('/admin')}
             >
               <div className="rounded-xl">
-                <img src={`http://127.0.0.1:8000/${ad.image}`} alt="image 01" style={{width:"200px",height:"150px",marginTop:'10px'}} />
+                <img src={`http://127.0.0.1:8000/${ad.image}`} alt="image 01" style={{width:"100%",height:"150px",marginTop:'10px',padding:'10px',justifyContent:"center",alignItems:"center"}} />
               </div>
 
-              <div className="flex flex-col justify-center items-center gap-4 p-4">
-                <p className="text-xl font-semibold">{ad.propertyType}</p>
-                <p style={{margin:"0"}}>{ad.price}</p>
+              <div className="flex flex-col justify-center items-center ">
+                <p className="text-xl font-semibold my-0">{ad.propertyType}</p>
+                <p className="my-0 text-red-400">Rs.{ad.price}/=</p>
+                <p className="my-0">{ad.location}</p>
+                <p className="my-0 ">{<IoCall />}   {ad.contactNumber}</p>
               </div>
             </div>
           ))}
