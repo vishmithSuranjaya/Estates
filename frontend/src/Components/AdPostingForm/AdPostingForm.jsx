@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Navbar1 from "../Navbar/Navbar";
 import axios from 'axios'
 import {variables} from '../../Variables';
-
+import { useNavigate } from "react-router-dom";
 
 const AdPostingForm =  () => {
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -29,6 +31,7 @@ const AdPostingForm =  () => {
   };
 
   const handleSubmit = async (e) => {
+   
     e.preventDefault();
 
     const data = new FormData();
@@ -46,7 +49,7 @@ const AdPostingForm =  () => {
     if (formData.image) {
       data.append("image", formData.image); // Append image if available
     }
-
+    
     try {
       const response = await axios.post(
         'http://127.0.0.1:8000/Proprty_Listing/save_advertisement/',
@@ -60,6 +63,7 @@ const AdPostingForm =  () => {
         }
       );
       alert(response.data.message);
+      navigate('/');
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send data. Please try again.");

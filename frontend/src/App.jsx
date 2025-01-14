@@ -4,8 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import Admin from './Pages/Admin';
+import AdminAds from './Components/Admin Dashboard/AdminAds';
 import AdsSearchPage from './Pages/Properties';
 import AdPostingForm from './Components/AdPostingForm/AdPostingForm';
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +21,7 @@ function App() {
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/search_filter" element={<AdsSearchPage />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/ads' element={<AdminAds />} />
         <Route path="/ad-posting-form" element={<AdPostingForm />} />
       </Routes>
      </BrowserRouter>

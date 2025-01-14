@@ -1,27 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar1 from "../Components/Navbar/Navbar";
-import Adcard from "../Components/Adcard/Adcard";
 import Footer from "../Components/Footer/Footer";
+import axios from 'axios';
+import {Button} from 'react-bootstrap'
 
 function AdsSearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
-  const [location, setLocation] = useState("");
+  const [location, setSearchLocation] = useState("");
 
-  const ads = [
-    { id: 1, title: "iPhone 14 for Sale", category: "Electronics", location: "New York" },
-    { id: 2, title: "Sofa Set Clearance", category: "Furniture", location: "California" },
-    { id: 3, title: "Gaming Laptop", category: "Electronics", location: "New York" },
-    { id: 4, title: "Bicycle for Kids", category: "Toys", location: "Texas" },
-  ];
+  const [advertisements, setAdvertisements] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [adsPerPage, setAdsPerPage] = useState(5); // Number of ads to display per page
 
-  const filteredAds = ads.filter((ad) => {
+  // Function to fetch advertisements
+  const fetchAdvertisements = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/Proprty_Listing/save_advertisement/', {
+        withCredentials: true,  
+      });
+      console.log(response.data);
+      setAdvertisements(response.data);
+    } catch (error) {
+      console.error('Error fetching advertisements:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAdvertisements();
+  }, []);
+
+  // Filter advertisements based on the search term, category, and location
+  const filteredAds = advertisements.filter((ad) => {
     return (
       ad.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (category ? ad.category === category : true) &&
-      (location ? ad.location === location : true)
+      (category ? ad.propertyType === category : true) &&
+      ad.location.toLowerCase().includes(location.toLowerCase())
     );
   });
+
+  // Calculate the index of the first and last ad on the current page
+  const indexOfLastAd = currentPage * adsPerPage;
+  const indexOfFirstAd = indexOfLastAd - adsPerPage;
+
+  // Get the ads for the current page
+  const currentAds = filteredAds.slice(indexOfFirstAd, indexOfLastAd);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredAds.length / adsPerPage);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -37,7 +66,7 @@ function AdsSearchPage() {
             top: "100px", // Adjust to leave space for the navbar
             left: "20px",
             width: "20%",
-            marginBottom:"400px",
+            marginBottom: "1000px",
             border: "1px solid #ddd",
             borderRadius: "8px",
             padding: "20px",
@@ -70,28 +99,23 @@ function AdsSearchPage() {
               style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
             >
               <option value="">All Categories</option>
-              <option value="Electronics">
-                
-              </option>
-              <option value="Furniture">Furniture</option>
-              <option value="Toys">Toys</option>
+              <option value="House">House</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Land">Land</option>
+              <option value="Commercial Land">Commercial Land</option>
             </select>
           </div>
           <div style={{ marginBottom: "15px" }}>
             <label htmlFor="location" style={{ display: "block", marginBottom: "5px" }}>
               Location
             </label>
-            <select
-              id="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
-            >
-              <option value="">All Locations</option>
-              <option value="New York">New York</option>
-              <option value="California">California</option>
-              <option value="Texas">Texas</option>
-            </select>
+            <input 
+            type="text" 
+            value={location} 
+            onChange={(e) => setSearchLocation(e.target.value)} 
+            style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+            placeholder = "Enter location.."
+            />
           </div>
         </div>
 
@@ -101,17 +125,16 @@ function AdsSearchPage() {
             flex: "1",
             marginLeft: "22%",
             padding: "20px",
-            marginTop:"0",
-            paddingTop:"0",
-            
+            marginTop: "0",
+            paddingTop: "0",
+            minHeight: filteredAds.length === 0 ? '500px' : 'auto', // Add more height when no results
           }}
         >
-          
-          {filteredAds.length > 0 ? (
+          {currentAds.length > 0 ? (
             <ul style={{ listStyle: "none", padding: 0 }}>
-              {/* {filteredAds.map((ad) => (
+              {currentAds.map((ad) => (
                 <li
-                  key={ad.id}
+                  key={ad.ad_id}
                   style={{
                     border: "1px solid #eee",
                     borderRadius: "8px",
@@ -119,21 +142,58 @@ function AdsSearchPage() {
                     padding: "15px",
                   }}
                 >
+                  <img src={`http://127.0.0.1:8000/${ad.image}`}  alt="advertisement"/>
+                  
+                 
                   <h3>{ad.title}</h3>
                   <p>Category: {ad.category}</p>
                   <p>Location: {ad.location}</p>
                 </li>
-              ))} */}
-              <Adcard />
-              
+              ))}
             </ul>
           ) : (
-            <p>No results found.</p>
+            <div>
+              <p>No results found.</p>
+            </div>
           )}
         </div>
       </div>
 
+      {/* Pagination Controls */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <Button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+          style={{ marginRight: "10px", padding: "10px", cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}
+        >
+          Previous
+        </Button>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <Button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            style={{
+              padding: "10px",
+              margin: "0 5px",
+              backgroundColor: currentPage === index + 1 ? "#007bff" : "#f1f1f1",
+              color: currentPage === index + 1 ? "#fff" : "#000",
+              cursor: "pointer",
+            }}
+          >
+            {index + 1}
+          </Button>
+        ))}
+        <Button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          style={{ marginLeft: "10px", padding: "10px", cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }}
+        >
+          Next
+        </Button>
+      </div>
+      <div style={{marginTop:"150px"}}>
       <Footer />
+      </div>
     </>
   );
 }
