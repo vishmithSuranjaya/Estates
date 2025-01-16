@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Navbar1 from "../Navbar/Navbar";
+import axios from 'axios'
+import {variables} from '../../Variables';
+import { useNavigate } from "react-router-dom";
 
-const AdPostingForm = () => {
+const AdPostingForm =  () => {
+
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -13,7 +18,7 @@ const AdPostingForm = () => {
     bathrooms: "",
     contactName: "",
     contactNumber: "",
-    image: null,
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -25,12 +30,47 @@ const AdPostingForm = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+   
     e.preventDefault();
 
-    // Submit logic (e.g., send data to an API)
-    console.log("Form Submitted", formData);
-  };
+    const data = new FormData();
+    // Append all the form fields to FormData
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("price", formData.price);
+    data.append("propertyType", formData.propertyType);
+    data.append("location", formData.location);
+    data.append("area", formData.area);
+    data.append("bedrooms", formData.bedrooms);
+    data.append("bathrooms", formData.bathrooms);
+    data.append("contactName", formData.contactName);
+    data.append("contactNumber", formData.contactNumber);
+    if (formData.image) {
+      data.append("image", formData.image); // Append image if available
+    }
+    
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:8000/Proprty_Listing/save_advertisement/',
+        data,
+        {
+          headers: {
+           
+            // Do not set 'Content-Type' for FormData, let axios handle it
+          },
+          withCredentials: true, // Include cookies with the request
+        }
+      );
+      alert(response.data.message);
+      navigate('/');
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to send data. Please try again.");
+    }
+};
+
+    
 
   return (
     <div>

@@ -19,7 +19,7 @@ function Navbar1() {
       <Navbar collapseOnSelect expand="lg" className="navabar">
         <Container>
           <div>
-            <Nav.Link as={Link} to="/post" className="nav-btn">
+            <Nav.Link as={Link} to="/ad-posting-form" className="nav-btn">
               Post an Advertisement
             </Nav.Link>
           </div>

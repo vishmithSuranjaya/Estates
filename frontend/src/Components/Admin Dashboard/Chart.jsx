@@ -4,11 +4,11 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+const data = {       //showing 
+  labels: ['1', '2', '3', '4', '5'], //
   datasets: [
     {
-      label: 'Visitors',
+      label: 'Price',
       data: [30, 70, 45, 80, 100],
       borderColor: 'rgb(75, 192, 192)',
       tension: 0.1,
