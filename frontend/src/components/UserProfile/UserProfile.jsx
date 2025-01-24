@@ -3,7 +3,6 @@ import Navbar from "../Navbar/Navbar";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
 import "./UserProfile.css";
-import Footer from "../Footer/Footer";
 
 const UserProfile = () => {
   const [profile, setProfile] = useState({
