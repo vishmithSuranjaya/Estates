@@ -1,0 +1,82 @@
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-left .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .navbar-links ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar-links li {
+    margin: 0 15px;
+  }
+  
+  .navbar-links a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links a:hover {
+    color: #007bff;
+  }
+  
+  .navbar-links a svg {
+    margin-right: 5px;
+  }
+  
+  .navbar-right .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .username {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .logout-icon {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  .logout-icon:hover {
+    color: red;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-links ul {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar-links li {
+      margin: 10px 0;
+    }
+  }
+  
