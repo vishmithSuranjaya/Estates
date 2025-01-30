@@ -25,12 +25,12 @@ const Login = () => {
     setLoading(true);  // Show loading indicator
 
     try {
-      const response = await axios.get("http://127.0.0.1:8000/members/login_user/", formData);
+      const response = await axios.post("http://127.0.0.1:8000/members/login_user/", formData);
 
       if (response.data.user) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("Login Successful! 🎉");
-
+        console.log("Backend response:", response.data);
         setTimeout(() => {
           navigate("/"); // Redirect
         }, 2000);
