@@ -4,6 +4,24 @@ import React, { useEffect, useState } from 'react';
 const Stats = () => {
 
   const [advertisement, setAdvertisements] = useState([]);
+  const [users, setUsers] = useState([]);
+
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/members/get_users/', {
+        withCredentials: true,  
+      });
+      console.log('Users:', response.data);
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   //function to fetch advertisemnts
   const fetchAdvertisements = async () => {
@@ -23,8 +41,9 @@ const Stats = () => {
   }, []);
 
   const totalAds = advertisement.length;
+  const totalUsers = users.length;
   const statsData = [
-    { label: 'Total Users', value: '1,245' },
+    { label: 'Total Users', value: totalUsers },
     { label: 'Ads', value: totalAds },
     { label: 'Revenue', value: 'Rs.' },
     { label: 'New Customers', value: '0' },

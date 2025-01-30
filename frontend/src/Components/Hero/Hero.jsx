@@ -1,11 +1,14 @@
 import { Dropdown } from 'bootstrap'
 import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button'
+import { motion } from 'framer-motion'
 
 import './Hero.css'
 
 
 const Hero = ({ placeholder, onSearch}) => {
+
+
   const [query, setQuery] = useState('');
 
   // Handle input changes
@@ -52,7 +55,6 @@ const Hero = ({ placeholder, onSearch}) => {
   </form>
 </div>
     </div>
-
   </div>
   )
 }

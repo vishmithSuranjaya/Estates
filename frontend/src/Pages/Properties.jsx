@@ -134,7 +134,7 @@ function AdsSearchPage() {
           }}
         >
           {currentAds.length > 0 ? (
-            <ul style={{ listStyle: "none", padding: 0,cursor:"pointer" }} onClick={() => navigate('/admin')}>
+            <ul style={{ listStyle: "none", padding: 0,cursor:"pointer" }} >
               {currentAds.map((ad) => (
                 <li
                 className="flex items-center p-4 bg-gray-100 rounded-lg shadow-md"
@@ -146,7 +146,7 @@ function AdsSearchPage() {
                     padding: "15px",
                   }}
                 >
-                  <div className="w-1/2">
+                  <div className="w-1/2" onClick={() => navigate(`/ad-full-view/${ad.ad_id}`)}>
                   <img src={`http://127.0.0.1:8000/${ad.image}`}  alt="advertisement" />
                   </div>
                  <div className="w-2/3 mx-4">
@@ -154,7 +154,7 @@ function AdsSearchPage() {
                   <p className="my-0 text-gray-900">{ad.description}</p>
                   <p className="my-0">Category: {ad.propertyType}</p>
                   <p className='my-0'>Location: {ad.location}</p>
-                  <p className="my-0">Price: {ad.price}</p>
+                  <p className="my-0">Price: Rs.{ad.price}/=</p>
                   <p className="my-0 ">{<IoCall />}   {ad.contactNumber}</p>
                   </div>
                 </li>
