@@ -12,6 +12,7 @@ import AdFullView from './Pages/AdFullView';
 import Login from './Components/Login/Login';
 import Register from './Components/Login/Register';
 import Admin_users from './Components/Admin Dashboard/Admin_users';
+import UserProfile from './Components/userprofile/UserProfile/UserProfile';
 // import AdDetails from './Components/DisplayAds/AdDetails';
 
 
@@ -32,7 +33,7 @@ function App() {
         <Route path='/admin-settings' element={<AdminSettings />} />
         <Route path="/ad-posting-form" element={<AdPostingForm />} />
         <Route path="/admin-users" element={<Admin_users />} />
-        {/* <Route path='/test' element={<AdDetails />} /> */}
+        <Route path='/user-profile/:id' element={<UserProfile />} />
       </Routes>
      </BrowserRouter>
 
