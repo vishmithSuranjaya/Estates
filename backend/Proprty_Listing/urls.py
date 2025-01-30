@@ -15,7 +15,10 @@ from . import views
 
 urlpatterns = [
     path('save_advertisement/', views.save_advertisement, name='save_advertisement'),
-    path('delete_advertisement/<int:ad_id>/', views.delete_advertisement, name='delete_advertisement'),
+    path('save_advertisement/<int:ad_id>/', views.save_advertisement, name='save_advertisement'),
+
+    # path('delete_advertisement/<int:id>/', views.delete_advertisement, name='delete_advertisement'),
+    # path('get_advertisement/<int:ad_id>/',views.get_advertisement),
     # path('delete_advertisement/<int:ad_id>/', views.delete_advertisement, name='delete_advertisement')
 
 ]

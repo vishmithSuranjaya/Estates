@@ -8,6 +8,11 @@ import AdminAds from './Components/Admin Dashboard/AdminAds';
 import AdsSearchPage from './Pages/Properties';
 import AdPostingForm from './Components/AdPostingForm/AdPostingForm';
 import AdminSettings from './Components/Admin Dashboard/AdminSettings';
+import AdFullView from './Pages/AdFullView';
+import Login from './Components/Login/Login';
+import Register from './Components/Login/Register';
+import Admin_users from './Components/Admin Dashboard/Admin_users';
+// import AdDetails from './Components/DisplayAds/AdDetails';
 
 
 function App() {
@@ -18,13 +23,16 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route path='/login' element={<Login />} /> */}
-        {/* <Route path="/register" element={<Register />} /> */}
+        <Route path='/login' element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/search_filter" element={<AdsSearchPage />} />
+        <Route path='/ad-full-view/:ad_id' element={<AdFullView />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/admin-ads' element={<AdminAds />} />
         <Route path='/admin-settings' element={<AdminSettings />} />
         <Route path="/ad-posting-form" element={<AdPostingForm />} />
+        <Route path="/admin-users" element={<Admin_users />} />
+        {/* <Route path='/test' element={<AdDetails />} /> */}
       </Routes>
      </BrowserRouter>
 

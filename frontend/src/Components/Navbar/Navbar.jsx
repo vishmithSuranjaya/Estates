@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import './Navbar.css';
 
@@ -13,6 +14,28 @@ function Navbar1() {
 
   const handleLoginModalOpen = () => setShowLoginModal(true);
   const handleLoginModalClose = () => setShowLoginModal(false);
+
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("username", formData.username);
+    data.append("password", formData.password);
+
+    // API calling goes here...
+  };
+
 
   return (
     <>
@@ -36,9 +59,10 @@ function Navbar1() {
             <Nav>
               <div>
                 <Nav.Link
-                  as="button"
+                  as={Link}
+                  to='/login'
                   className="nav-btn"
-                  onClick={handleLoginModalOpen}
+                  // onClick={handleLoginModalOpen}
                   style={{
                     color: '#fff',
                     padding: '8px',
@@ -72,32 +96,57 @@ function Navbar1() {
 </Modal.Header>
 
         <Modal.Body>
-          <form>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Enter your password"
-              />
-            </div>
-            <Button as={Link} to="/register" className="w-20 bg-blue-500 mr-2 float-right">Register</Button>
-            <Button type="submit" className="w-20 bg-blue-500 mr-2 float-right">Log In</Button>
-          </form>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Username Input */}
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {/* Password Input */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-600"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition duration-200"
+          >
+            Login
+          </button>
+        </form>
+        <Nav.Link 
+         as={Link}
+         to="/admin"
+        ></Nav.Link>
         </Modal.Body>
       </Modal>
     </>

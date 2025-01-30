@@ -5,10 +5,7 @@ import Chart from './Chart';
 import UserDetails from './UserDetails';
 
 const Dashboard = () => {
-  const users = [
-    { name: 'John Doe', email: 'john@example.com', status: 'Active' },
-    { name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive' },
-  ];
+  
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">

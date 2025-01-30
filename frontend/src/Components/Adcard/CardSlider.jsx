@@ -84,21 +84,28 @@ const CardSlider = () => {
 <Slider {...settings}>
           {advertisements.slice(0, 5).map((ad) => (
             <div
-              className="bg-white h-[300px] text-black rounded-xl pl-[10px] cursor-pointer"
-              style={{ marginLeft: "10px" }}
-              onClick={() => navigate('/admin')}
-            >
-              <div className="rounded-xl">
-                <img src={`http://127.0.0.1:8000/${ad.image}`} alt="image 01" style={{width:"100%",height:"150px",marginTop:'10px',padding:'10px',justifyContent:"center",alignItems:"center"}} />
-              </div>
-
-              <div className="flex flex-col justify-center items-center ">
-                <p className="text-xl font-semibold my-0">{ad.propertyType}</p>
-                <p className="my-0 text-red-400">Rs.{ad.price}/=</p>
-                <p className="my-0">{ad.location}</p>
-                <p className="my-0 ">{<IoCall />}   {ad.contactNumber}</p>
-              </div>
+            className="bg-white h-[300px] text-black rounded-xl cursor-pointer"
+            style={{ marginLeft: "10px" }}
+            onClick={() => navigate(`/ad-full-view/${ad.ad_id}`)} //add the ad_id to this link
+          >
+            <div className="flex justify-center items-center rounded-xl">
+              <img
+                src={`http://127.0.0.1:8000/${ad.image}`}
+                alt="image 01"
+                className="w-full h-[150px] mt-2 px-2"
+              />
             </div>
+          
+            <div className="flex flex-col justify-center items-center ">
+              <p className="text-xl font-semibold my-0">{ad.propertyType}</p>
+              <p className="my-0 text-red-400">Rs.{ad.price}/=</p>
+              <p className="my-0">{ad.location}</p>
+              <p className="my-0">
+                {<IoCall />} {ad.contactNumber}
+              </p>
+            </div>
+          </div>
+          
           ))}
         </Slider>
       </div>

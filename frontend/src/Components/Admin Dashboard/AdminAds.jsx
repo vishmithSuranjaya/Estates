@@ -36,24 +36,34 @@ const AdminAds = () => {
   };
 
   const DeleteAd = (id) => {
-    const csrftoken = getCSRFToken();
-    alert('Deleting ad with id: ' + id);
-    axios.delete(`http://127.0.0.1:8000/Proprty_Listing/delete_advertisement/${id}/`, {
-      headers: {
-        // 'X-CSRFToken': csrftoken
-      }
-    })
-    .then((response) => {
-      alert('Ad deleted!');
-      // Remove deleted ad from state to reflect changes immediately
-      // setAdvertisements((prevAds) => prevAds.filter((ad) => ad.ad_id !== ad_id));
-    })
-    .catch((error) => {
-      alert('Error deleting ad');
-      console.error('Delete Error:', error);
-    });
+    const csrftoken = getCSRFToken(); // Fetch the CSRF token
+    if (!id) {
+        alert('Ad ID is missing!');
+        return;
+    }
 
+    alert('Deleting ad with id: ' + id);
+
+    axios.delete(`http://127.0.0.1:8000/Proprty_Listing/save_advertisement/${id}`, {
+            headers: {
+                'X-CSRFToken': csrftoken, // Include CSRF token
+                'X-Requested-With': 'XMLHttpRequest', // Ensure Django recognizes this as an AJAX request
+            }
+        })
+        .then((response) => {
+            alert('Ad deleted successfully!');
+            console.log('Delete Response:', response.data);
+
+            // Update state to remove the deleted ad
+            setAdvertisements((prevAds) => prevAds.filter((ad) => ad.id !== id));
+        })
+        .catch((error) => {
+            alert('Error deleting ad. Check the console for more details.');
+            console.error('Delete Error:', error.response || error.message);
+        });
 };
+
+
 
   return (
     <div className="flex h-screen">
@@ -78,9 +88,9 @@ const AdminAds = () => {
             </thead>
 
             <tbody>
-              {advertisements.map((ad) => (
-                <tr key={ad.ad_id}>
-                  <td>{ad.ad_id}</td>
+              {advertisements.map((ad,index) => (
+                <tr key={index}>
+                  <td>{++index}</td>
                   <td>{ad.price}</td>
                   <td>{ad.location}</td>
                   <td>{ad.propertyType}</td>
@@ -88,7 +98,7 @@ const AdminAds = () => {
                   <td>{ad.contactName}</td>
                   <td>{ad.contactNumber}</td>
                   <td>
-                    <Button className="danger" onClick={() => DeleteAd(ad.ad_id)}>
+                    <Button className="" onClick={() => DeleteAd(ad.ad_id)}>
                       Delete
                     </Button>
                   </td>
