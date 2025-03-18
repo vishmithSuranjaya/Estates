@@ -1,0 +1,89 @@
+/* Sidebar CSS */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+
+.sidebar-header .logo {
+  /* font-size: 1.5rem; */
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.sidebar-links {
+  margin-left: 50px;
+  margin-top: -100px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  flex-direction: column;
+  align-items: baseline;
+}
+.sidebar-links li {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-links li a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.sidebar-links li:hover {
+  background-color: #34495e;
+}
+
+.sidebar-footer {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.user-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-bottom: 10px;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.username {
+  margin-top: 50px;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
