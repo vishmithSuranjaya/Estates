@@ -46,8 +46,7 @@ This is a full-stack web application designed to simplify real estate transactio
 
 - Clone the repository:
 
-git clone [Link Text](https://github.com/your-username/your-repo.git)
- <br>
+git clone <https://github.com/vishmithSuranjaya/Estates.git><br>
 cd your-repo
 
 - Backend Setup:
