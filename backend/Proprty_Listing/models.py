@@ -4,6 +4,7 @@ class Advertisement(models.Model):
     ad_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    status = models.BooleanField(default=False)
     price = models.FloatField(blank=True, null=True)
     propertyType = models.CharField(max_length=255, choices=[
         ('House', 'House'),
