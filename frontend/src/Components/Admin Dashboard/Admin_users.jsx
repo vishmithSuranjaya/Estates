@@ -3,11 +3,16 @@ import Sidebar from './Sidebar'
 import Header from './Header'
 import axios from 'axios'
 import { Button } from 'react-bootstrap';
+import ConfirmationModelBox from '../ConfirmationModel/ConfirmationModelBox';
 
 
 const Admin_users = () => {
 
   const [users, setUsers] = useState([]);
+  const [modelMsg, setModelMsg] = useState("");
+  const [modelShow, setModelShow] = useState(false);
+  const [selectedEmail, setSelectedEmail] = useState("");
+  const [selectedUserStatus, setSelectedUserStatus] = useState(false);
 
   // Function to fetch advertisements
   const fetchUsers = async () => {
@@ -21,6 +26,31 @@ const Admin_users = () => {
       console.error('Error fetching users:', error);
     }
   };
+
+  const getActionForUser= async(email,action)=>{
+    try {
+      const response = await axios.post(
+        'http://127.0.0.1:8000/members/getAction/',
+        {
+          email:email,
+          action:action,
+        },
+        {
+          headers: {
+           
+            // Do not set 'Content-Type' for FormData, let axios handle it
+          },
+          withCredentials: true, // Include cookies with the request
+        }
+      );
+      navigate('/');
+    } catch (error) {
+      console.error("Error:", error);
+    }finally{
+      fetchUsers();
+    }
+
+  }
 
   useEffect(() => {
     fetchUsers();
@@ -65,9 +95,22 @@ const Admin_users = () => {
                   <td>{user.email}</td>
                  
                   <td>
-                    <Button className="" onClick={() => DeleteAd(ad.ad_id)}>
-                      Delete
-                    </Button>
+                    {user.status&&<Button className="" onClick={() => {
+                      setModelMsg(`Do you want to ${user.status ? "Enable" : "Disable"} the user?`),
+                      setSelectedEmail(user.email),
+                      setSelectedUserStatus(user.status),
+                      setModelShow(true)
+                    }}>
+                      {user.status? "Enable":"Diable"}
+                    </Button>}
+                    {!user.status&&<Button className="btn btn-danger" onClick={() => {
+                      setModelMsg(`Do you want to ${user.status ? "Enable" : "Disable"} the user?`),
+                      setSelectedEmail(user.email),
+                      setSelectedUserStatus(user.status),
+                      setModelShow(true)
+                    }}>
+                      {user.status? "Enable":"Diable"}
+                    </Button>}
                   </td>
                 </tr>
               ))}
@@ -77,6 +120,12 @@ const Admin_users = () => {
        
       </div>
     </div>
+    <ConfirmationModelBox 
+      message={modelMsg}
+      show={modelShow}
+      handleClose={()=>setModelShow(false)}
+      onClickFun={()=>{getActionForUser(selectedEmail,!selectedUserStatus)}}      
+    />
     </div>
   )
 }

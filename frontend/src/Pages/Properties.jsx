@@ -18,7 +18,7 @@ function AdsSearchPage() {
   // Function to fetch advertisements
   const fetchAdvertisements = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/Proprty_Listing/save_advertisement/', {
+      const response = await axios.get('http://127.0.0.1:8000/Proprty_Listing/viewAdvertisement/', {
         withCredentials: true,  
       });
       console.log(response.data);
