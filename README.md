@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # :zap: Estates :house_with_garden: :key: :tent:
 
 ## :spades: Real Estate Management Application :golf:
