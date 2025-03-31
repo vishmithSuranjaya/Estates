@@ -12,7 +12,7 @@ const DisplayAds = () => {
     const [advertisements, setAdvertisements] = useState([]);
     const fetchAdvertisemets = async () =>{
         try{
-            const response = await axios.get('http://127.0.0.1:8000/Proprty_Listing/save_advertisement/',{
+            const response = await axios.get('http://127.0.0.1:8000/Proprty_Listing/viewAdvertisement/',{
                 withCredentials: true,
             });
             setAdvertisements(response.data);

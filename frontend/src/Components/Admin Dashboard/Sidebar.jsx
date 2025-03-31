@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Sidebar = () => {
   return (
-    <motion.div 
+    <motion.div
       className="w-64 h-screen bg-gray-800 text-white flex flex-col justify-between"
       initial={{ x: '-100%' }}  // Initial position off-screen
       animate={{ x: 0 }}  // Animate to on-screen
@@ -20,7 +20,7 @@ const Sidebar = () => {
             <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
           </div>
           <Nav className="flex-column mt-4 w-100">
-           
+
             <motion.div
               whileHover={{ scale: 1.05 }}  // Hover effect to scale item
             >
@@ -33,7 +33,7 @@ const Sidebar = () => {
                 Dashboard
               </Nav.Link>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.05 }}
             >
@@ -56,11 +56,11 @@ const Sidebar = () => {
                 className="d-flex align-items-center px-3 py-3 my-1 text-white hover:bg-gray-700 rounded"
               >
                 <FaBox className="me-2 text-lg" />
-                Advertisements
+                Property Ads
               </Nav.Link>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               whileHover={{ scale: 1.05 }}
             >
               <Nav.Link
@@ -71,7 +71,7 @@ const Sidebar = () => {
                 <FaCog className="me-2 text-lg" />
                 Settings
               </Nav.Link>
-            </motion.div>
+            </motion.div> */}
           </Nav>
         </Navbar>
       </div>
@@ -83,7 +83,7 @@ const Sidebar = () => {
         >
           <Nav.Link
             as={NavLink}
-            to="/logout"
+            to="/login"
             className="d-flex align-items-center px-3 py-3 my-1 text-white hover:bg-gray-700 rounded"
           >
             <FaSignOutAlt className="me-2 text-lg" />
