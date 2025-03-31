@@ -63,3 +63,13 @@ python manage.py runserver <br>
 cd frontend <br>
 npm install <br>
 npm run dev <br>
+
+
+---
+
+<div style="align-items:center; justify-content: center; gap: 15px;">
+  <img src="backend/images/images/Screenshot (4).png">
+  <img src="backend/images/images/Screenshot (5).png">
+  <img src="backend/images/images/Screenshot (6).png">
+  <img src="backend/images/images/Screenshot (7).png">
+</div>
