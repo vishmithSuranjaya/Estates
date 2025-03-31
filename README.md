@@ -74,5 +74,4 @@ npm run dev <br>
   <img src="backend/images/images/Screenshot (6).png">
   <img src="backend/images/images/Screenshot (7).png">
 </div>
-=======
->>>>>>> 8009de355d86b9d81508a1d261b5ed312139ac78
+
