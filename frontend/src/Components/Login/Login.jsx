@@ -31,9 +31,16 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("Login Successful! 🎉");
         console.log("Backend response:", response.data);
-        setTimeout(() => {
-          navigate("/"); // Redirect
-        }, 2000);
+        console.log(response.data.user.userType)
+        if (response.data.user.userType === "admin") {
+          setTimeout(() => {
+            navigate("/admin"); // Redirect
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            navigate("/"); // Redirect
+          }, 2000);
+        }
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed! Please try again.");

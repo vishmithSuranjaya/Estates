@@ -10,9 +10,8 @@ const Stats = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/members/get_users/', {
-        withCredentials: true,  
+        withCredentials: true,
       });
-      console.log('Users:', response.data);
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -25,14 +24,14 @@ const Stats = () => {
 
   //function to fetch advertisemnts
   const fetchAdvertisements = async () => {
-    try{
-      const responce = await axios.get('http://127.0.0.1:8000/Proprty_Listing/save_advertisement/',{
+    try {
+      const responce = await axios.get('http://127.0.0.1:8000/Proprty_Listing/viewAdvertisement/', {
       }, {
-        withCredentials: true,  
+        withCredentials: true,
       });
       setAdvertisements(responce.data);
-    }catch(error){
-      console.error("Error fetching advertisements:",error);
+    } catch (error) {
+      console.error("Error fetching advertisements:", error);
     }
   };
 
@@ -44,9 +43,9 @@ const Stats = () => {
   const totalUsers = users.length;
   const statsData = [
     { label: 'Total Users', value: totalUsers },
-    { label: 'Ads', value: totalAds },
-    { label: 'Revenue', value: 'Rs.' },
-    { label: 'New Customers', value: '0' },
+    { label: 'Properties', value: totalAds },
+    // { label: 'Revenue', value: 'Rs.' },
+    // { label: 'New Customers', value: '0' },
   ];
 
   return (

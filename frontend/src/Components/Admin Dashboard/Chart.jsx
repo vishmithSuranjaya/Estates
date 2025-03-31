@@ -2,6 +2,7 @@
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import React, { useState, useEffect} from 'react'
+import axios from 'axios';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -28,7 +29,6 @@ const Chart = () => {
       const response = await axios.get('http://127.0.0.1:8000/members/get_users/', {
         withCredentials: true,  
       });
-      console.log('Users:', response.data);
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
