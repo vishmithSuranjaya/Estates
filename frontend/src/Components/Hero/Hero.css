@@ -1,0 +1,63 @@
+.hero{
+    background-image: url('../../assets/prop7.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0.5rem;
+    height: 400px;
+    color:aliceblue;
+}
+.first-content>h1{
+    font-size: 45px;
+    font-weight: 600;
+}
+@media (max-width : 560px){
+    .hero-section{
+        margin: auto;
+        padding: 0;
+        display: block;
+        justify-content: start;
+        
+    }
+    .hero-section .first-content h1{
+        font-size: 25px;
+        font-weight: 650;
+    }
+
+    .second-content{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .search-bar{
+        width: 80%;
+    }
+}
+
+
+@media (max-width:420px){
+    .hero-section .first-content>h1{
+        
+    }
+    .search-bar{
+        display: flex;
+    }
+}
+
+@media (max-width : 400px){
+    .hero-section{
+        margin: 0;
+        padding: 0;
+    }
+    .hero-section .first-content{
+        display: none;
+    }
+    .hero-section .second-content{
+        display: none;
+    }
+    
+}
+
+
+

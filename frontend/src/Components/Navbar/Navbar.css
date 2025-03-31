@@ -1,0 +1,24 @@
+.navbar{
+  font-weight: 750;
+  font-size: 18px;
+}
+.nav-btn {
+    background-color: darkblue !important;
+    border: none; 
+    color: white !important; 
+    font-weight: 650;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .nav-btn:hover {
+    background-color: #9999f4; 
+  }
+
+  .nav-btn1{
+    background-color: darkblue;
+    padding: 8px;
+  }
+  
