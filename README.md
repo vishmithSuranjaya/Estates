@@ -53,9 +53,9 @@ cd your-repo
 - Backend Setup:
 
 cd backend <br>
-python -m venv env <br>
-source env/bin/activate  # On Windows use `env\Scripts\activate` <br>
-pip install -r requirements.txt <br>
+source backend/bin/activate  # On Windows use `backend\Scripts\activate.bat` <br>
+pip install djangorestframework <br>
+pip install django-cors-headers <br>
 python manage.py migrate <br>
 python manage.py runserver <br>
 
